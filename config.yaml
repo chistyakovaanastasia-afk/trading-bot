@@ -1,0 +1,70 @@
+# claude-fable-bot configuration
+# Instruments and which strategy trades them. Symbols are Yahoo Finance tickers.
+
+account:
+  starting_equity: 100000.0
+  state_file: state/portfolio.json
+
+instruments:
+  SPY:
+    name: S&P 500 ETF
+    strategy: mean_reversion
+    asset_class: equity
+  QQQ:
+    name: Nasdaq 100 ETF
+    strategy: mean_reversion
+    asset_class: equity
+  BTC-USD:
+    name: Bitcoin
+    strategy: momentum
+    asset_class: crypto
+    fractional: true
+  GC=F:
+    name: Gold futures
+    strategy: trend_following
+    asset_class: commodity
+  CL=F:
+    name: WTI Crude futures
+    strategy: trend_following
+    asset_class: commodity
+
+strategies:
+  mean_reversion:
+    lookback: 20          # moving-average / z-score window
+    entry_z: 2.0          # enter when price is this many sigmas from the mean
+    exit_z: 0.25          # exit when price has reverted to within this band
+    max_hold_days: 10
+  momentum:
+    breakout_days: 20     # enter long on close above the N-day high
+    exit_days: 10         # exit on close below the M-day low
+    volume_factor: 1.2    # require volume above this multiple of its 20-day average
+  trend_following:
+    fast_ema: 20
+    slow_ema: 50
+    trail_atr_mult: 3.0   # ATR trailing stop distance
+
+risk:
+  # The non-negotiable rules.
+  max_risk_per_trade: 0.01      # 1% of equity at risk per trade
+  atr_period: 14
+  stop_atr_mult: 2.0            # initial stop distance in ATRs
+  max_open_positions: 4
+  correlation_threshold: 0.80   # block a new trade correlated with same-direction exposure
+  correlation_lookback: 60      # days of returns used for the correlation filter
+  max_drawdown: 0.10            # 10% peak-to-trough closes everything and halts
+
+execution:
+  slippage_bps:
+    equity: 5
+    crypto: 10
+    commodity: 10
+  commission_per_trade: 1.0
+
+backtest:
+  months: 6
+  risk_free_rate: 0.04    # annualized, for Sharpe
+
+briefing:
+  timezone: Europe/Zurich
+  # Telegram is optional: set TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID in the
+  # environment. Without them, briefings print to stdout.
