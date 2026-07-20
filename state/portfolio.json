@@ -1,7 +1,7 @@
 {
   "cash": 77041.63649075318,
   "starting_equity": 100000.0,
-  "peak_equity": 100000.0,
+  "peak_equity": 100011.61641018678,
   "positions": {
     "QQQ": {
       "direction": 1,
@@ -11,7 +11,7 @@
       "strategy": "mean_reversion",
       "reason": "z-score -2.01 below -2.0",
       "opened": "2026-07-17",
-      "bars_held": 0
+      "bars_held": 1
     }
   },
   "trades": [],
@@ -39,6 +39,10 @@
     {
       "date": "2026-07-19",
       "equity": 99987.53
+    },
+    {
+      "date": "2026-07-20",
+      "equity": 100011.62
     }
   ],
   "halted": false
