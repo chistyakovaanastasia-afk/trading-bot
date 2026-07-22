@@ -11,7 +11,7 @@
       "strategy": "mean_reversion",
       "reason": "z-score -2.01 below -2.0",
       "opened": "2026-07-17",
-      "bars_held": 2
+      "bars_held": 3
     }
   },
   "trades": [],
@@ -47,6 +47,10 @@
     {
       "date": "2026-07-21",
       "equity": 100437.65
+    },
+    {
+      "date": "2026-07-22",
+      "equity": 100318.19
     }
   ],
   "halted": false
