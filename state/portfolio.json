@@ -1,20 +1,34 @@
 {
-  "cash": 77041.63649075318,
+  "cash": 52283.51380385045,
   "starting_equity": 100000.0,
   "peak_equity": 100437.64552395631,
   "positions": {
-    "QQQ": {
+    "SPY": {
+      "direction": 1,
+      "qty": 64.0,
+      "entry_price": 729.8847795410156,
+      "stop_price": 714.1385934012277,
+      "strategy": "mean_reversion",
+      "reason": "z-score -2.55 below -2.0",
+      "opened": "2026-07-29",
+      "bars_held": 0
+    }
+  },
+  "trades": [
+    {
+      "symbol": "QQQ",
+      "strategy": "mean_reversion",
       "direction": 1,
       "qty": 33.0,
       "entry_price": 695.6776820983887,
-      "stop_price": 665.6814226422991,
-      "strategy": "mean_reversion",
-      "reason": "z-score -2.01 below -2.0",
+      "exit_price": 665.3485819309781,
+      "pnl": -1001.86,
       "opened": "2026-07-17",
-      "bars_held": 6
+      "closed": "2026-07-29",
+      "entry_reason": "z-score -2.01 below -2.0",
+      "exit_reason": "hard stop hit"
     }
-  },
-  "trades": [],
+  ],
   "equity_curve": [
     {
       "date": "2026-07-14",
@@ -67,6 +81,10 @@
     {
       "date": "2026-07-28",
       "equity": 99332.81
+    },
+    {
+      "date": "2026-07-29",
+      "equity": 98972.8
     }
   ],
   "halted": false
